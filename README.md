@@ -2,7 +2,7 @@
 
 # Smart Expense Tracker
 
-> A Spring Boot microservice to manage and visualize your personal expenses with ease.
+> A beautifully designed Spring Boot microservice to manage and visualize your personal expenses with ease.
 
 **Author:** Ayush Singh
 **Repository:** [SmartExpenseTracker](https://github.com/AyushSingh9930/SmartExpenseTracker)
@@ -87,28 +87,33 @@ The API will be available at `http://localhost:8080` and Swagger UI at `http://l
 
 ## 🚀 Usage
 
-### Authentication
+### 🔐 Authentication Endpoints
 
-1. **Register**: `POST /api/v1/auth/register`
-2. **Login**: `POST /api/v1/auth/login`
+| Endpoint                 | Method | Description                  |
+| ------------------------ | ------ | ---------------------------- |
+| `/api/v1/users/register` | POST   | Register a new user          |
+| `/api/v1/users/login`    | POST   | Authenticate and receive JWT |
 
-Include the returned `Bearer <token>` in the `Authorization` header for protected endpoints.
+### 💸 Expense Endpoints
 
-### Expenses API
+| Endpoint                      | Method | Description                                  |
+| ----------------------------- | ------ | -------------------------------------------- |
+| `/api/v1/expense/add`         | POST   | Add a new expense                            |
+| `/api/v1/expense/by-username` | GET    | List expenses for the authenticated user     |
+| `/api/v1/expense/update/{id}` | PUT    | Update an existing expense by ID             |
+| `/api/v1/expense/filter`      | POST   | Filter expenses by date, category, or amount |
+| `/api/v1/expense/delete/{id}` | DELETE | Delete an expense by ID                      |
 
-| Endpoint                  | Method   | Description                    |
-| ------------------------- | -------- | ------------------------------ |
-| `/api/v1/expenses`        | `GET`    | List all expenses (secure)     |
-| `/api/v1/expenses`        | `POST`   | Create a new expense           |
-| `/api/v1/expenses/{id}`   | `GET`    | Retrieve expense details by ID |
-| `/api/v1/expenses/{id}`   | `PUT`    | Update an existing expense     |
-| `/api/v1/expenses/{id}`   | `DELETE` | Delete an expense              |
-| `/api/v1/expenses/filter` | `POST`   | Filter expenses by criteria    |
+### 🛡️ Admin Endpoints
 
-#### Example: Create Expense
+| Endpoint                    | Method | Description              |
+| --------------------------- | ------ | ------------------------ |
+| `/api/v1/admin/delete/{id}` | DELETE | Delete a user by user ID |
+
+#### Example: Add Expense
 
 ```bash
-curl -X POST http://localhost:8080/api/v1/expenses \
+curl -X POST http://localhost:8080/api/v1/expense/add \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -118,6 +123,32 @@ curl -X POST http://localhost:8080/api/v1/expenses \
     "date": "2025-08-01"
 }'
 ```
+
+## 🧪 Testing
+
+Run all tests with:
+
+```bash
+./mvnw test
+```
+
+Run all tests with:
+
+```bash
+./mvnw test
+```
+
+## 🤝 Contributing
+
+1. Fork this repository
+2. Create a feature branch (`git checkout -b feature-name`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature-name`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
